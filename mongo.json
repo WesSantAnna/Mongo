@@ -1,0 +1,14 @@
+{
+    "name":"Wesley",
+    "age": 21,
+    "sports": [
+        "basketball",
+        "waterPolo",
+        "soccer"
+    ],
+    "university": {
+        "programming": 8.9,
+        "statiscs": 7,
+        "SoftwareEngeering": 8
+    }
+}

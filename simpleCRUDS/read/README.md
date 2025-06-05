@@ -6,7 +6,7 @@ db.usuarios.findOne({ nome: "Maria" }) // retorna o primeiro que corresponder
 db.usuarios.find({ idade: { $gt: 26 } }) // idade maior que 26
 ```
 
-Em Mongo, as querys são muito ituivas e são passadas como argumento da find(). Por exemplo: suponha que temos os seguintes dados
+Em Mongo, as querys são muito intuitivas e são passadas como argumento do comando find(). Por exemplo: suponha que temos os seguintes dados
 
 ```powershell
 [

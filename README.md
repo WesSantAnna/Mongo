@@ -1,4 +1,4 @@
-# Conceitos
+# Conceito
 # MongoDB
 
 *Mongo BD* é um banco de dados não relacional cujo paradigma é orientado a documentos, isto significa que é um modelo de dados intuitivo, rápido e fácil que oferece uma estrutura flexível que permite que o modelo evolua conforma as necessidades da aplicação.
@@ -113,79 +113,24 @@ Funciona como uma chave primária gerado automaticamente pelo Mongo.  Em sua com
 
 Você pode passar qualquer valor para o ObjectId, **desde que seja único na sua collection**.
 
+# Fire and Forget
+
+Um mecanismo de ganho de performance em troca da segurança. Na prática, ao utilziar esse conceito, você apenas abre mão da confimação de que o dado inserido foi de fato carragado no servidor porque não tem uma mensagem de retorno confirmando a operação.  
+
+```powershell
+db.collection.updateOne(
+  { name: "Cristiano Ronaldo" },
+  { $set: { sports: ["soccer"] } },
+  { writeConcern: { w: 0 } }  // ← aqui está o fire-and-forget
+)
+```
+
+# Filter
+
+Durante as operações CRUD, todas elas compartilham de um comportamento (execeto `*insert*()`) que é a utilização do `filter()` - também chamado de *query,* seja atualizar, deletar ou filtrar. Desse modo, é de suma importância se atentar ao `filter()`
+
 # Ambiente
 
 Precisa fazer configurções via variáveis de ambiente 
 
 Precisa rodar o comando **pwsh** para rodar a versão mais recendo do *powershell*
-
-# Comandos
-
-## Sintaxe base
-
-```powershell
-db.<nome_da_coleção>.<funçãoCRUD>()
-```
-
-```powershell
-db.<nome_da_coleção>.<funçãoCRUD>()
-```
-
----
-
-### **1. CREATE** – Inserir documentos
-
-```jsx
-db.usuarios.insertOne({ nome: "João", idade: 30 })
-db.usuarios.insertMany([
-  { nome: "Maria", idade: 25 },
-  { nome: "Pedro", idade: 28 }
-])
-```
-
----
-
-### **2. READ** – Consultar documentos
-
-```jsx
-db.usuarios.find() // retorna todos
-db.usuarios.findOne({ nome: "Maria" }) // retorna o primeiro que corresponder
-db.usuarios.find({ idade: { $gt: 26 } }) // idade maior que 26
-```
-
----
-
-### **3. UPDATE** – Atualizar documentos
-
-```jsx
-db.usuarios.updateOne(
-  { nome: "João" },
-  { $set: { idade: 31 } }
-)
-
-db.usuarios.updateMany(
-  { idade: { $lt: 30 } },
-  { $set: { ativo: true } }
-)
-```
-
----
-
-### **4. DELETE** – Remover documentos
-
-```jsx
-db.usuarios.deleteOne({ nome: "Pedro" })
-db.usuarios.deleteMany({ idade: { $lt: 25 } })
-```
-
----
-
-### Selecionando banco de dados
-
-Antes de usar `db`, você seleciona o banco com:
-
-```jsx
-use nome_do_banco
-```
-
-Depois disso, `db` se refere a esse banco.

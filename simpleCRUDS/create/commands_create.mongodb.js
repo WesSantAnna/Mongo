@@ -1,18 +1,8 @@
-/* global use, db */
-// MongoDB Playground
-// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
-
 const database = 'crud';
-const collection = 'comands_create';
 
-// The current database to use.
 use(database);
 
-// Create a new collection.
-db.createCollection(collection);
-
-
-db.collection.insertOne({ 
+db.create_commands.insertOne({ 
     name: 'Wesley SantAnna',
     age: 21,
     department: {
@@ -28,7 +18,7 @@ db.collection.insertOne({
     }
 });
 
-db.collection.insertMany([
+db.create_commands.insertMany([
     { 
         name: 'Laura Mendes',
         age: 25,

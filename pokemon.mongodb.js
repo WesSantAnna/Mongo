@@ -32,3 +32,25 @@ db.pokemon.find({
   ]
 },{_id:0}).sort({attack: -1, defense: -1, speed: -1})
 
+
+db.pokemon.find( {types: "Fire"} ).sort({attack: -1}).limit(5) //query que limita a quantidade de documentos apresentados
+
+db.pokemon.find({types: "Fire"}).sort({attack:-1}).skip(5).limit(5) //skip pula páginas
+
+db.pokemon.find({
+  attack: { $gt: 150 },
+  name: { $not: /^Mew/ }
+})
+.limit(5)
+.sort({ attack: -1 })
+db.pokemon.findOne({_id:427
+
+})
+
+db.pokemon.updateOne({name:/^O/},{$set:{startwithO:true}}) //molocando um campo bia set
+
+db.pokemon.updateOne({startwithO:true},{$unset:{startwithO:""}}) //desfazendo as auterações
+
+db.pokemon.updateMany({types:"Fire"}, {$inc: {attack: 10}}) //utilizando operador de incremento
+
+db.pokemon.updateOne({name:/^Mew/},{ $unset:{attack: ""}})
